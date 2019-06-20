@@ -30,8 +30,12 @@ loop do
     date = tweet.created_at.to_date
 
     if date < cutoff_date
+      puts "Marking Tweet(#{tweet.id}, date: #{date}) for deletion"
       trash_tweets << tweet
+    else
+      puts "Skipping Tweet(#{tweet.id}, date: #{date}) for deletion"
     end
+
   end
 
   max_id = tweets.last.id
