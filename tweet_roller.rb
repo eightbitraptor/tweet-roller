@@ -19,6 +19,7 @@ loop do
   default_options = {
     count: 200,
     include_rts: true,
+    exclude_reples: false,
   }
 
   tweets = if max_id > 0
