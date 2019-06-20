@@ -16,10 +16,15 @@ loop do
   puts "trash_tweets: #{trash_tweets.inspect}"
   puts "max_id: #{max_id}"
 
+  default_options = {
+    count: 200,
+    include_rts: true,
+  }
+
   tweets = if max_id > 0
-    client.user_timeline(me, count: 200, max_id: max_id)
+    client.user_timeline(me, default_options.merge(max_id: max_id))
   else
-    client.user_timeline(me, count: 200)
+    client.user_timeline(me, default_options)
   end
 
   break if tweets.length == 1
